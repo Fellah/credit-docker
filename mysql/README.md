@@ -1,4 +1,4 @@
-# Credit.BY MySQL Conainer Image
+# Credit.BY MySQL Container Image
 
 ## Build
 
