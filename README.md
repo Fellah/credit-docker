@@ -66,3 +66,10 @@ $ docker top [container] [ps options]
 $ docker top php
 ```
 
+```
+$ docker top php aux --sort=-pcpu
+```
+
+```
+$ docker top php aux --sort=-rss
+```
