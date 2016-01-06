@@ -1,4 +1,4 @@
-FROM credit-php:5.6-apache
+FROM credit-php:5-apache
 
 RUN pecl install xdebug
 

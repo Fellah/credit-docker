@@ -1,0 +1,62 @@
+proxy:
+  image: nginx
+  ports:
+   - "80:80"
+  volumes:
+   - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+  links:
+   - site
+   - manage
+   - api
+   - store
+
+site:
+  image: credit-php
+  volumes:
+   - /path/to/the/site:/var/www/html:ro
+  links:
+   - api
+   - redis-site
+
+manage:
+  image: credit-php
+  volumes:
+   - /path/to/the/manage:/var/www/html:ro
+  links:
+   - api
+   - redis-manage
+
+api:
+  image: credit-php
+  volumes:
+   - /path/to/the/api:/var/www/html:ro
+  links:
+   - db
+   - redis-api
+
+store:
+  image: credit-php
+  volumes:
+   - /path/to/the/store:/var/www/html:ro
+  links:
+   - db
+   - redis-store
+
+db:
+  image: credit-mysql
+  ports:
+   - "3306:3306"
+  volumes:
+   - /path/to/the/db:/var/lib/mysql
+
+redis-site:
+  image: redis
+
+redis-manage:
+  image: redis
+
+redis-api:
+  image: redis
+
+redis-store:
+  image: redis
